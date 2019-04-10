@@ -37,6 +37,21 @@ public class Auto {
         this.encendido = encendido;
     }
 
+    public void consumirCombustible(double cantidad){
+        this.combustible = (this.getCombustible()-cantidad);
+    }
+
+    public void encender() throws SinCombustibleException{
+        if (this.combustible>10) {
+            this.setTemperatura(70);
+            this.setEncendido(true);
+            this.consumirCombustible(this.getCombustible() * 0.001);
+        }
+        else {
+            throw new SinCombustibleException();
+        }
+    }
+
 
 
 }
